@@ -1,10 +1,12 @@
 import { Module } from '@nestjs/common';
 import { GptModule } from './gpt/gpt.module';
+import { ConfigModule } from '@nestjs/config';
 
 
-@Module({
-  imports: [GptModule],
+@Module( {
+  imports: [ GptModule, ConfigModule.forRoot() ],
   controllers: [],
-  providers: [],
-})
-export class AppModule {}
+  providers: []
+} )
+export class AppModule {
+}
