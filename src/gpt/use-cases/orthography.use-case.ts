@@ -34,12 +34,11 @@ export const orthographyUseCase = async ( openai: OpenAI, options: Options ) => 
     ],
     model: 'gpt-3.5-turbo',
     temperature: 0.3,
-    max_tokens: 150
+    max_tokens: 150,
+    response_format: {
+      type: 'json_object'
+    }
   } );
 
-  return completion.choices[ 0 ];
-
-  return {
-    prompt
-  };
+  return JSON.parse( completion.choices[ 0 ].message.content );
 };
